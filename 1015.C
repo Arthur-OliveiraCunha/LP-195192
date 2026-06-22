@@ -32,3 +32,24 @@ int main() {
 
     return 0;
 }
+
+
+
+//#include <stdio.h>
+#include <math.h>
+
+int main() {
+
+    double x1, x2, distancia;
+
+    scanf("%lf %lf", &x1, &x2);
+
+    distancia = abs(x1 - x2);
+
+    printf("distancia e %lf", distancia);
+
+
+
+    return 0;
+
+}
