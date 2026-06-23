@@ -9,45 +9,60 @@ Objetivo    : <<<Criptografar uma mensagem>>>
 Aprendizado : <<<Inversao e troca de variaveis>>>
 -------------------------------------------------------------------------- */
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
- 
-int main() {
-    char V[1001];
-    int A;
-    int tamanho = strlen(V);
-    char AUX;
-    
-    scanf("%d", &A);
-    getchar();
-    
-    for(int i = 0; i < A; i++){
+#include <ctype.h>
+
+void codigo () {
+
+    char code[1000];
+
+    fgets(code, 1000, stdin);
+
+    int t = strlen(code);
+
+    if (code[t-1] == '\n') {
+        code[t-1] = '\0';
+        t--;
+    }
+
+    for (int i; i < t; i++) {
+        if (isalpha(code[i])) {
+            code[i] = code[i] + 3;
+        }
+    }
+
+
+    for (int i = 0; i < (t/2); i++) {
+        char vt = code[i];
+        code[i] = code[t - 1 - i];
+        code[t - 1 - i] = vt;
+    }
+
+
+    int metade = t/2;
+
+    for (int i = metade; i < t; i++) {
+        code[i] = code[i] - 1;
+    }
+
+    printf("%s\n", code);
+
+}
+
+
+int main () {
+
+    int n;
+
+    if (scanf("%d", &n) == 1) {
+        getchar();
+        while (n--) {
+
+            codigo();
+        }
         
-        fgets(V, 1001, stdin);
-        V[strcspn(V,"\n")] = '\0';
-
-        for(int j = 0; V[j] != '\0' ; j++){
-            if((V[j] >= 'B' && V[j] <= 'Z') || (V[j] >= 'b' && V[j] <= 'z')){
-            V[j] += 3;
-            }
-        }
-
-        int tamanho = strlen(V);
-        char AUX;
-
-        for(int q = 0; q < tamanho/2; q++){
-            AUX = V[q];
-            V[q] = V[tamanho -1 -q];
-            V[tamanho -1 -q] = AUX;
-        }
-
-        for(int o = tamanho / 2; V[o] != '\0'; o++){
-                V[o] -= 1;
-            }
-
-        printf("%s\n", V);
-
     }
 
     return 0;
+
 }
