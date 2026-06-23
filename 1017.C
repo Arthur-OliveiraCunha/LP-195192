@@ -11,25 +11,21 @@ Pergunta de segunda ordem: <<<Fazer a pergunta>>>
 
 #include <stdio.h>
 
-float calcularLitros(int Vmedia, int horas){
-    int Distancia;
-    float Litros;
-    
-    distancia = Vmedia * Horas;
-    Litros = Distancia/12.0;
-    
-    return Litros;
-    
-}
-
-
 int main() {
-    int Horas, Vmedia;
+
+    int Horas, Velocidade, Distancia;
+    float Litros;
+
+    scanf("%d\n", &Horas);
+    scanf("%d\n", &Velocidade);
+
+    Distancia = Velocidade * Horas;
     
-    scanf("%d", &Horas);
-    scanf("%d", &Vmedia);
-    
-    printf("%.3f\n", calcularLitros(Vmedia, horas));
+    Litros = Distancia/12.0;
+
+    printf("%.3f\n", Litros);
 
     return 0;
+
+    
 }
