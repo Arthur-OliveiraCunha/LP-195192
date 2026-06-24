@@ -13,30 +13,38 @@ Pergunta de segunda ordem: <<<Fazer a pergunta>>>
 #include <stdio.h>
 #include <string.h>
 
-int main()
-{
-    int i, A, B, C, D;
+int main() {
+    
+    int N, D;
+    char T[100];
 
-    scanf("%d", &D); 
-    char str[51];
-    char converted_str;
-    for (i = 0; i < D; i++)
-    {
-        scanf("%s", str);
-        scanf("%d", &A);
-        getchar();
-        C = strlen(str); 
+    if (scanf("%d", &N) == 1) {
+        
+        while (N--) {
+            
+            scanf("%s", T);
+           
+            scanf("%d", &D);
 
-        for (B = 0; B < C; B++)
-        {
-            converted_str = str[B] - A; 
-            if (converted_str < 65)     
-            {
-                converted_str += 26; 
+            int t = strlen(T);
+
+            
+            for (int i = 0; i < t; i++) {
+                
+                char n = T[i] - D;
+
+                
+                if (n < 'A') {
+                    n = n + 26;
+                }
+
+                
+                T[i] = n;
             }
-            printf("%c", converted_str);
+
+            printf("%s\n", T);
         }
-        printf("\n");
     }
+
     return 0;
 }
