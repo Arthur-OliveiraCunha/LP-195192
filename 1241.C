@@ -10,31 +10,34 @@ Objetivo    : Determinar se dois vetores tem numeros finais identicos
 Aprendizado : <<<Comparar vetores>>>
 -------------------------------------------------------------------------- */
 
-int main()
-{
-	int V[1000], W[1000];
-	int i=0;
-	
-	
-    for(int i = 0; i <= 100; i++){
-       
-       scanf("%d", V[ i ]);
-       scanf("%d", W[ i ]);
-}
-    i=(1000-i);
-    
-    if(V[i]=W[i]){
-        
-        printf("encaixa");
-    }    
-        
-    else{
-            
-        printf("nao encaixa");
-            
-    }
-    
-    
-	return 0;
+#include <stdio.h>
+#include <string.h>
 
+int main() {
+    int N;
+    char A[1005], B[1005];
+
+    if (scanf("%d", &N) == 1) {
+        
+        while (N--) {
+            scanf("%s %s", A, B);
+
+            int tam_A = strlen(A);
+            int tam_B = strlen(B);
+
+            if (tam_B > tam_A) {
+                printf("nao encaixa\n");
+            } 
+            else {
+
+                if (strcmp(&A[tam_A - tam_B], B) == 0) {
+                    printf("encaixa\n");
+                } else {
+                    printf("nao encaixa\n");
+                }
+            }
+        }
+    }
+
+    return 0;
 }
