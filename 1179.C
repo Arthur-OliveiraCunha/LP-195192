@@ -9,59 +9,53 @@ Aprendizado : <<<Separar variaveis por tipo>>>
 Pergunta de segunda ordem: <<<Fazer a pergunta>>>
 -------------------------------------------------------------------------- */
 
-
 #include <stdio.h>
+#include <string.h>
  
 int main() {
-    int P[5];
-    int I[5];
-    int N, qtdP = 0, qtdI = 0;
+
     
-    for(int i = 0; i < 15; i++){
+    int P[5], I[5], CP = 0, CI = 0, i, N, j;
+
+    for (i = 0; i < 15; i++) {
 
         scanf("%d", &N);
-        
-        if(N % 2 == 0){
 
-            P[qtdP] = N;
-            qtdP++;
-            if(qtdP == 5){
-
-                for(int q = 0; q < 5; q++){
-                    printf("P[%d] = %d\n", q, P[q]);
-                }
-                qtdP = 0;
-            }
+        if (N % 2 == 0) {
+            P[CP] = N;
+            CP++;
             
-        }else{
-
-            I[qtdI] = N;
-            qtdI++;
-            if(qtdI == 5){
-
-                for(int w = 0; w < 5; w++){
-
-                    printf("I[%d] = %d\n", w, I[w]);
-                }
-                qtdI = 0;
+            if (CP == 5) {
+                for (j = 0; j < 5; j++) {
+                    printf("par[%d] = %d\n", j, P[j]); 
+                } 
+                CP = 0;
             }
-        }
-    }
-    if(qtdI > 0){
-
-        for(int a = 0; a < qtdI; a++){
-
-            printf("I[%d] = %d\n", a, I[a]);
-        }
+        } 
+        else { 
+            I[CI] = N;
+            CI++;
+            
+            
+            if (CI == 5) {
+                for (j = 0; j < 5; j++) {
+                    printf("impar[%d] = %d\n", j, I[j]); 
+                } 
+                CI = 0;
+            }
+        } 
     }
     
-    if(qtdP > 0){
-
-        for(int j = 0; j < qtdP; j++){
-
-            printf("P[%d] = %d\n", j, P[j]);
-        }
+    
+    for (int j = 0; j < CI; j++) {
+        printf("impar[%d] = %d\n", j, I[j]);
     }
  
+    for (int j = 0; j < CP; j++) {
+        printf("par[%d] = %d\n", j, P[j]);
+    }
+
     return 0;
 }
+
+
