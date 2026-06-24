@@ -10,28 +10,49 @@ Pergunta de segunda ordem: <<<Fazer a pergunta>>>
 -------------------------------------------------------------------------- */
 
 
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 #include <ctype.h>
+ 
+int main() {
 
-int main(){
-    int n, maiuscula;
-    char sentenca[51];
+    int i = 0; 
+    char F[100];
 
-    while(gets(sentenca) != NULL){
-        maiuscula = 1;
-        n = strlen(sentenca);
+    
+    while (fgets(F, sizeof(F), stdin) != NULL) {
+        
+        int tam = strlen(F); 
+        int M = 1;
 
-        for(int i = 0; i < n; ++i){
-            if(!isalpha(sentenca[i]))  continue;
+        for (i = 0; i < tam; i++) {
+            
+            if (F[i] == ' ' || F[i] == '\n') {
+                continue; 
+            }
 
-            if(maiuscula)   sentenca[i] = toupper(sentenca[i]);
-            else            sentenca[i] = tolower(sentenca[i]);
-            maiuscula = 1 - maiuscula;
+            if (M == 1) {
+                F[i] = toupper(F[i]);
+                M = 0; 
+                
+            } else {
+                
+                F[i] = tolower(F[i]);
+                
+                M = 1; 
+            }
         }
 
-        printf("%s\n", sentenca);
+        
+        printf("%s", F);
+        
     }
+    
 
     return 0;
+
+    
 }
+
+
+
