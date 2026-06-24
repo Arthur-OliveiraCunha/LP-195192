@@ -9,25 +9,33 @@ Aprendizado : <<<Uso de Vetores>>>
 -------------------------------------------------------------------------- */
 
 #include <stdio.h>
-
+ 
 int main() {
-    int vetor[100];
-    int maior, p = 1;
+ 
+    int V[100], i, M, P=1;
 
-    for (int i = 0; i < 100; i++) {
-        scanf("%d", &vetor[i]);
+    for (i=0; i<100; i++) {
+
+        scanf("%d", &V[i]);
+        
     }
 
-    maior = vetor[0];
+    M = V[0];
 
-    for (int i = 1; i < 100; i++) {
-        if (vetor[i] > maior) {
-            maior = vetor[i];
-            p = i + 1;
+    for (i = 1; i < 100; i++) {
+        
+        if (V[i] > M) {
+
+        M = V[i];
+        P = i + 1;
+
         }
+        
     }
 
-    printf("%d\n%d\n", maior, p);
-
+    printf("%d\n%d\n", M, P);
+    
     return 0;
+
+
 }
