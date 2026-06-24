@@ -10,66 +10,70 @@ Pergunta de segunda ordem: <<<Fazer a pergunta>>>
 -------------------------------------------------------------------------- */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
 typedef struct {
-    char cor[10];
-    char tamanho[3];
-    char nome[100];   
-} Pessoa;
- 
+    char nome[100];
+    char cor[20];
+    char tamanho;
+} Camiseta;
+
+
+int comparar(const void *a, const void *b) {
+    Camiseta *c1 = (Camiseta *)a;
+    Camiseta *c2 = (Camiseta *)b;
+
+    
+    int comp_cor = strcmp(c1->cor, c2->cor);
+    if (comp_cor != 0) return comp_cor;
+
+    
+    if (c1->tamanho != c2->tamanho) {
+        
+        if (c1->tamanho == 'P') return -1;
+        if (c2->tamanho == 'P') return 1;
+        if (c1->tamanho == 'M' && c2->tamanho == 'G') return -1;
+        if (c1->tamanho == 'G' && c2->tamanho == 'M') return 1;
+    }
+
+
+    return strcmp(c1->nome, c2->nome);
+}
+
 int main() {
     int N;
-    int caso1 = 1;
+    int primeiro_caso = 1;
 
-    while (scanf("%d", &N) && N != 0) {
+    
+    while (scanf("%d", &N) == 1 && N != 0) {
         
-        if (!caso1) {
+        if (!primeiro_caso) {
             printf("\n");
         }
-        caso1 = 0;
+        primeiro_caso = 0;
 
-        Pessoa pessoas[N];
+        Camiseta lista[N];
 
-        for(int i = 0; i < N; i++){
-            scanf(" %[^\n]", pessoas[i].nome);
-            scanf("%s %s", pessoas[i].cor, pessoas[i].tamanho);
-        }
-        
-        Pessoa temp;
-        for(int i = 0; i < N - 1; i++){
-            for(int j = 0; j < N - i - 1; j++){
-                
-                int trocar = 0; 
+        for (int i = 0; i < N; i++) {
+            
+            getchar(); 
+            fgets(lista[i].nome, sizeof(lista[i].nome), stdin);
+            
+            lista[i].nome[strcspn(lista[i].nome, "\n")] = '\0';
 
-                if (strcmp(pessoas[j].cor, pessoas[j+1].cor) > 0) {
-                    trocar = 1;
-                } 
-                else if (strcmp(pessoas[j].cor, pessoas[j+1].cor) == 0) {
-                    
-                    if (pessoas[j].tamanho[0] < pessoas[j+1].tamanho[0]) {
-                        trocar = 1;
-                    } 
-                    else if (pessoas[j].tamanho[0] == pessoas[j+1].tamanho[0]) {
-                        
-                        if (strcmp(pessoas[j].nome, pessoas[j+1].nome) > 0) {
-                            trocar = 1;
-                        }
-                    }
-                }
-
-                if (trocar == 1) {
-
-                    temp = pessoas[j];
-                    pessoas[j] = pessoas[j+1];
-                    pessoas[j+1] = temp;
-                }
-            }
+            
+            scanf("%s %c", lista[i].cor, &lista[i].tamanho);
         }
 
-        for(int i = 0; i < N; i++){
-            printf("%s %s %s\n", pessoas[i].cor, pessoas[i].tamanho, pessoas[i].nome);
+        qsort(lista, N, sizeof(Camiseta), comparar);
+
+        for (int i = 0; i < N; i++) {
+            printf("%s %c %s\n", lista[i].cor, lista[i].tamanho, lista[i].nome);
         }
-    }  return 0;
+    }
+
+    return 0;
 }
+
+
