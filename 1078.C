@@ -12,16 +12,16 @@ Aprendizado : <<<Efetuar multiplicacoes progressivas com uma constante e uma var
  
 int main() {
  
-    int N, i, AUX;
-    
-    scanf("%d", &N);
-    
-    for(i<=10; i=10; i++);
-    {
-       AUX=N*i;
-       
-       printf("%d x %d = %d/N", i, N, AUX);
+    int C, i, R = 0;
+
+    scanf("%d", &C);
+
+    for (i = 1; i <= 10; i++) {
+
+        R = C * i;
+
+        printf("%d x %d = %d\n", i, C, R);
     }
- 
+    
     return 0;
 }
