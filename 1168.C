@@ -11,67 +11,63 @@ Pergunta de segunda ordem: <<<Fazer a pergunta>>>
 
 
 #include <stdio.h>
+#include <string.h>
  
 int main() {
+ 
     int N;
-    char n[1000000];
-    int qtd_leds = 0;
-    
+    char O[100000];
+
     scanf("%d", &N);
-    
-    for(int i = 0; i < N; i++){
-        scanf("%s", n);
+
+    for (int i = 0; i < N; i++) {
         
-        for(int j = 0; n[j] != '\0'; j++){
-            switch(n[j]){
+        int leds = 0; 
 
-                case '1':
-                    qtd_leds += 2;
-                    break;
+        scanf("%s", O);
 
-                case '2':
-                    qtd_leds += 5;
-                    break;
+        int tamanho = strlen(O);
 
-                case '3':
-                    qtd_leds += 5;
-                    break;
-
-                case '4':
-                    qtd_leds += 4;
-                    break;
-
-                case '5':
-                    qtd_leds += 5;
-                    break;
-
-                case '6':
-                    qtd_leds += 6;
-                    break;
-
-                case '7':
-                    qtd_leds += 3;
-                    break;
-
-                case '8':
-                    qtd_leds += 7;
-                    break;
-
-                case '9':
-                    qtd_leds += 6;
-                    break;
-
-                case '0':
-                    qtd_leds += 6;
-                    break;
+        for (int j = 0; j < tamanho; j++) {
+            
+            switch (O[j]) {
+                
+                case '1': 
+                    leds += 2; break;
+                
+                case '2': 
+                    leds += 5; break;
+                
+                case '3': 
+                    leds += 5; break;
+                
+                case '4': 
+                    leds += 4; break;
+                
+                case '5': 
+                    leds += 5; break;
+                
+                case '6': 
+                    leds += 6; break;
+                
+                case '7': 
+                    leds += 3; break;
+               
+                case '8': 
+                    leds += 7; break;
+               
+                case '9': 
+                    leds += 6; break;
+                
+                case '0': 
+                    leds += 6; break;
             }
         }
-        
-    printf("%d leds\n", qtd_leds);
 
-    qtd_leds = 0;
         
+        printf("%d leds\n", leds);
     }
- 
+
     return 0;
 }
+
