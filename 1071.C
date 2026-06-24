@@ -13,22 +13,31 @@ Pergunta de segunda ordem: <<<>>>
  
 int main() {
  
-    int A, B;
+    int A, B, m, M, S=0, i;
+
     scanf("%d", &A);
     scanf("%d", &B);
-    int soma = 0;
-    if(A <= B){
-        for(int i = A+1; i < B; i++){
-            if(i%2){
-                soma = soma + i;
-            }
-        }
-    }else{
-        for(int i = B+1; i < A; i++){
-            if(i%2){
-                soma = soma + i;
-            }
-        }
+
+    if (A < B) {
+        m = A;
+        M = B;
+    } else {
+        m = B;
+        M = A;
     }
-    printf("%d\n", soma);
+
+    for (i = (m + 1); i < M; i++) {
+        
+        if (i % 2 != 0) {
+
+            S += i;
+        }
+    } 
+
+    printf("%d\n", S);
+    
+    
+    return 0;
+
+
 }
