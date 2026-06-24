@@ -9,38 +9,33 @@ Objetivo    : <<<Imprimir matriz>>>
 Aprendizado : <<<Matrizes>>>
 -------------------------------------------------------------------------- */
 #include <stdio.h>
- 
+
 int main() {
-    int A;
     
-    while(scanf("%d", &A) != EOF){
+    int N;
 
-        int M[70][70];
-
-        for(int i=0; i < A; i++){
-
-            for(int j=0; j < A;j++){
+    while (scanf("%d", &N) != EOF) {
+        
+        for (int i = 0; i < N; i++) {
+            
+            for (int j = 0; j < N; j++) {
                 
-                if(j == A - 1 - i){
-                    M[i][j] = 2;
+                if (i + j == N - 1) {
+                    printf("2");
                 }
-                else if(i == j){
-                    M[i][j] = 1;
+                
+                else if (i == j) {
+                    printf("1");
                 }
-                else{
-                    M[i][j] = 3;
+                
+                else {
+                    printf("3");
                 }
             }
-        }
-        for(int i=0; i < A; i++){
-           
-                for(int j=0; j < A; j++){
-               
-                printf("%d", M[i][j]);
-            }
+            
             printf("\n");
         }
     }
-    
+
     return 0;
 }
