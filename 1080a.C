@@ -12,20 +12,23 @@ Aprendizado : <<<Uso de Vetores>>>
  
 int main() {
  
-    int maior, posicao, i, M;
-    maior = 0;
-  
-    for (i = 1; i <= 100; ++i){
-        
-      scanf("%i", &M);
-      
-      if(M > maior){
-          maior = M;
-          posicao = i;
-      }
-      
-  }
-    printf("%i\n%i\n", maior, posicao);
- 
+    int M = 0, P, i, m;
+
+    for (i = 1; i <= 100; i++) {
+
+        scanf("%d", &m);
+
+        if (m > M) {
+
+                M = m;
+                P = i;
+        }
+    }
+
+
+    printf("%d\n%d\n", M, P);
+    
     return 0;
+
+
 }
