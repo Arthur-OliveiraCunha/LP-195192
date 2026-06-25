@@ -73,7 +73,7 @@ bool checar_vitoria(int matriz[9][9]) {
 }
 
 void exibir_alerta(char *mensagem) {
-    printf("%s\n======================================\n", message);
+    printf("%s\n======================================\n", mensagem);
 }
 
 int main() {
